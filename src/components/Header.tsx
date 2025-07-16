@@ -1,8 +1,5 @@
-// src/components/Header.tsx
-"use client"
-
 import React from "react"
-import { TextField, InputAdornment, AppBar, Toolbar, Typography } from "@mui/material"
+import { TextField, InputAdornment, AppBar, Toolbar, Typography, Box } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
 
 interface HeaderProps {
@@ -14,9 +11,18 @@ export default function Header({ searchTerm, onSearchChange }: HeaderProps) {
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "#FFCB05", color: "#2A75BB" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography variant="h5" fontWeight="bold">
-          Pokédex
-        </Typography>
+        <Box display="flex" alignItems="center" gap={1}>
+          {/* Imagen Pokeball desde carpeta public */}
+          <img
+            src="/pokeball.png"
+            alt="Pokeball"
+            style={{ width: 30, height: 30 }}
+          />
+          <Typography variant="h5" fontWeight="bold">
+            Pokédex
+          </Typography>
+        </Box>
+
         <TextField
           variant="outlined"
           placeholder="Buscar Pokémon"

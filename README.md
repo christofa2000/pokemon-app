@@ -6,7 +6,7 @@ Una app web desarrollada con **Next.js**, **TypeScript** y **Material UI**, que 
 
 ![Vista previa](public/screenshot.png)
 
-> 💡 Agregá una captura del proyecto (opcional) en `/public` y renombrala como `screenshot.png`.
+
 
 ---
 

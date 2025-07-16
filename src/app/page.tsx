@@ -7,7 +7,6 @@ import { getPokemonDetail } from "@/poke/getPokemonDetail"
 import { PokemonDetail } from "@/poke/PokemonDetail"
 
 import {
-  AppBar,
   Box,
   Container,
   Grid,
@@ -15,13 +14,13 @@ import {
   InputBase,
   Modal,
   Paper,
-  Toolbar,
   Typography,
   Card,
   CardContent,
   CardMedia,
 } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
+import Header from "@/components/Header"  // <-- Importá el header
 
 export default function HomePage() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
@@ -62,55 +61,27 @@ export default function HomePage() {
 
   return (
     <Box>
-      {/* Header */}
-      <AppBar position="static" sx={{ bgcolor: "#D32F2F" }}>
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Pokédex
-          </Typography>
-          <Paper
-            component="form"
-            sx={{
-              p: "2px 4px",
-              display: "flex",
-              alignItems: "center",
-              width: 250,
-              bgcolor: "white",
-            }}
-          >
-            <InputBase
-              sx={{ ml: 1, flex: 1 }}
-              placeholder="Buscar Pokémon"
-              inputProps={{ "aria-label": "buscar pokemon" }}
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-              <SearchIcon />
-            </IconButton>
-          </Paper>
-        </Toolbar>
-      </AppBar>
+      {/* Usamos el header importado y pasamos el estado de búsqueda */}
+      <Header searchTerm={search} onSearchChange={setSearch} />
 
       {/* Grid de cartas */}
       <Container sx={{ py: 4 }}>
         <Grid container spacing={3}>
           {filteredPokemons.map(pokemon => (
             <Grid item xs={12} sm={6} md={3} key={pokemon.name}>
-             <Card
-  onClick={() => handleCardClick(pokemon.url)}
-  sx={{
-    cursor: "pointer",
-    border: "4px solid #FFCC00",
-    transition: "transform 0.2s",
-    backgroundColor: "rgba(255, 255, 255, 0.3)", // fondo blanco semi-transparente
-    backdropFilter: "blur(8px)", // efecto blur para fondo detrás
-    "&:hover": {
-      transform: "scale(1.05)",
-    },
-  }}
->
-
+              <Card
+                onClick={() => handleCardClick(pokemon.url)}
+                sx={{
+                  cursor: "pointer",
+                  border: "4px solid #FFCC00",
+                  transition: "transform 0.2s",
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  backdropFilter: "blur(8px)",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
+                }}
+              >
                 <CardContent>
                   <Typography variant="h6" textAlign="center" textTransform="capitalize">
                     {pokemon.name}

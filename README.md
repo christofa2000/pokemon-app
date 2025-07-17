@@ -17,6 +17,7 @@ Una app web desarrollada con **Next.js**, **TypeScript** y **Material UI**, que 
 - 🎨 UI moderna con Material UI
 - 🧠 Arquitectura organizada
 - 🔧 Preparado para agregar buscador
+- 🔷 Axios
 
 ---
 
